@@ -105,6 +105,7 @@ th, td {
 .mole {
 	position: absolute;
 	bottom: -15px;
+	left: 23px;
 	transition: transform 2s;
 	transform: translate3d(0,0,0);
 }
