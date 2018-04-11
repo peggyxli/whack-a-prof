@@ -5,6 +5,8 @@ body {
 	height: 100vh;
 }
 
+
+
 #game-screen {
 	width: 1024px;
 	height: 640px;
@@ -12,11 +14,27 @@ body {
 	position: relative;
 }
 
+#game-screen > * {
+	position: absolute;
+}
+
+#game-screen h2, #game-menu-buttons {
+	font-family: 'Pacifico', cursive;
+	font-size: 23px;
+}
+
+
+
 #wall {
 	height: 196px;
 	width: 100%;
 	background-color: #92ae86;
-	position: absolute;
+}
+
+
+
+#game-stats {
+	top: 254px;
 }
 
 .game-stat-bg {
@@ -24,12 +42,37 @@ body {
 	background-color: #815433;
 	height: 105px;
 	width: 226px;
-	position: absolute;
+	margin-bottom: 24px;
+	position: relative;
 }
+
+.game-stat-bg > * {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	margin: 0;
+}
+
+#game-menu-buttons {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	color: #959595
+}
+
+#game-menu-buttons span {
+	cursor: pointer;
+}
+
+#game-menu-buttons span:hover {
+	color: white;
+}
+
+
 
 table {
 	height: 100%;
-	position: absolute;
 	right: 0px;
 }
 
