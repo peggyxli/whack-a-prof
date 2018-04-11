@@ -1,0 +1,48 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#container {
+	width: 1024px;
+	height: 640px;
+	background-color: #e2e4e4;
+	position: relative;
+}
+
+#wall {
+	height: 196px;
+	width: 100%;
+	background-color: #92ae86;
+	position: absolute;
+}
+
+table {
+	width: 800px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+}
+
+td {
+	position: relative;
+	overflow: hidden;
+}
+
+.desk {
+	position: absolute;
+	top: 0;
+}
+
+.mole {
+	position: absolute;
+	bottom: -15px;
+	transition: transform 2s;
+	transform: translate3d(0,0,0);
+}
+
+.mole-hide {
+	transform: translate3d(0,35px,0);
+}
