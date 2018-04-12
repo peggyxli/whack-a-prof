@@ -1,4 +1,3 @@
-
 var seconds_left = 60;
 var time_interval = setInterval(function() {
 	$("#time-left").text(--seconds_left);
@@ -9,11 +8,19 @@ var time_interval = setInterval(function() {
 	}
 }, 1000);
 
+
 var mole_array = $(".mole");
 var mole_interval = setInterval(function() {
 	$.each(mole_array, function() {
-		if (Math.floor(Math.random() * 2) == 1)
-			$(this).toggleClass("mole-hide");
+		if (Math.floor(Math.random() * 2) == 1) {
+			if ($(this).hasClass("mole-hide")) {
+				$(this).attr("src","moles/student1.png");
+				$(this).removeClass("mole-hide");
+			}
+			else {
+				$(this).addClass("mole-hide");
+			}
+		}
 	});
 }, 1000);
 
