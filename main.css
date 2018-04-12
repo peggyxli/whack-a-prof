@@ -107,9 +107,8 @@ th, td {
 	bottom: -15px;
 	left: 23px;
 	transition: transform 2s;
-	transform: translate3d(0,0,0);
 }
 
 .mole-hide {
-	transform: translate3d(0,35px,0);
+	transform: translate3d(0,150px,0);
 }
