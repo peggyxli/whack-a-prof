@@ -14,13 +14,16 @@ var mole_types = ["student1", "student2", "professor1", "professor2", "dean1", "
 var mole_interval = setInterval(function() {
 	$.each(mole_slots, function(slot_index, value) {
 		if (Math.floor(Math.random() * 2) == 1 && $(this).not(":animated")) {
-			if ($(this).hasClass("mole-hide")) {
+			if ($(this).is(":hidden") && $(this).not(":animated")) {
 				var random_index = Math.floor(Math.random() * mole_types.length);
 				$(this).attr("src","moles/" + mole_types[random_index] + ".png");
-				$(this).removeClass("mole-hide");
+				$(this).show(0);
+					$(this).animate({bottom: "-15px"}, 2000);
 			}
 			else {
-				$(this).addClass("mole-hide");
+				$(this).animate({bottom: "-165px"}, 2000, function() {
+					$(this).hide();
+				});
 			}
 		}
 	});
@@ -32,7 +35,9 @@ $(".mole").click(function() {
 	if (image_url.search("whacked") == -1) {
 		image_url = image_url.replace(".png", "-whacked.png");
 		$(this).attr("src",image_url);
-		$(this).addClass("mole-hide");
+		$(this).stop(true).animate({bottom: "-165px"}, 2000, function() {
+			$(this).hide();
+		});
 		var score = parseInt($("#score").text());
 		$("#score").text(score+10);
 	}
