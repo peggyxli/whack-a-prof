@@ -1,3 +1,5 @@
+$("#bg-music").prop("volume", 0.1);
+
 var seconds_left = 60;
 var time_interval = setInterval(function() {
 	$("#time-left").text(--seconds_left);
@@ -18,7 +20,7 @@ var mole_interval = setInterval(function() {
 				var random_index = Math.floor(Math.random() * mole_types.length);
 				$(this).attr("src","moles/" + mole_types[random_index] + ".png");
 				$(this).show(0);
-					$(this).animate({bottom: "-15px"}, 2000);
+				$(this).animate({bottom: "-15px"}, 2000);
 			}
 			else {
 				$(this).animate({bottom: "-165px"}, 2000, function() {
@@ -35,6 +37,7 @@ $(".mole").click(function() {
 	if (image_url.search("whacked") == -1) {
 		image_url = image_url.replace(".png", "-whacked.png");
 		$(this).attr("src",image_url);
+		$("#bonk").get(0).play();
 		$(this).stop(true).animate({bottom: "-165px"}, 2000, function() {
 			$(this).hide();
 		});
