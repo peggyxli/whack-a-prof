@@ -94,7 +94,6 @@ th {
 th, td {
 	width: 238px;
 	position: relative;
-	overflow: hidden;
 }
 
 .desk {
@@ -102,10 +101,32 @@ th, td {
 	top: 0;
 }
 
+.mole-slot {
+	overflow: hidden;
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+	
 .mole {
 	position: absolute;
 	bottom: -165px;
 	left: 23px;
 	cursor: pointer;
 	display: none;
+}
+
+.hammer {
+	position: absolute;
+	width: 90px;
+    height: auto;
+    top: -50px;
+    right: 40px;
+	transition: .2s;
+	display: none;
+}
+
+.hammer-smash {
+	transform: rotate(-90deg);
 }

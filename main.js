@@ -32,15 +32,40 @@ var mole_interval = setInterval(function() {
 }, 1000);
 
 
+function AnimateRotate(d){
+    var elem = $("#MyDiv2");
+
+    $({deg: 0}).animate({deg: d}, {
+        duration: 2000,
+        step: function(now){
+            elem.css({
+                 transform: "rotate(" + now + "deg)"
+            });
+        }
+    });
+}
+
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
 	if (image_url.search("whacked") == -1) {
+		$(this).stop(true);
+		
+		var table_cell = $(this).parent().parent();
+		table_cell.append("<img class=\"hammer\" src=\"hammer.png\">");
+		table_cell.children(".hammer").fadeIn(200).css("transform", "rotate(-90deg)");
+		
 		image_url = image_url.replace(".png", "-whacked.png");
 		$(this).attr("src",image_url);
 		$("#bonk").get(0).play();
-		$(this).stop(true).animate({bottom: "-165px"}, 2000, function() {
+			
+		table_cell.children(".hammer").delay(250).fadeOut(200, function() {
+			$(this).remove();
+		});
+		
+		$(this).delay(100).animate({bottom: "-165px"}, 2000, function() {
 			$(this).hide();
 		});
+		
 		var score = parseInt($("#score").text());
 		$("#score").text(score+10);
 	}
