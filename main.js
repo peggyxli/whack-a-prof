@@ -50,16 +50,25 @@ $(".mole").click(function() {
 	if (image_url.search("whacked") == -1) {
 		$(this).stop(true);
 		
-		var table_cell = $(this).parent().parent();
-		table_cell.append("<img class=\"hammer\" src=\"hammer.png\">");
-		table_cell.children(".hammer").fadeIn(200).css("transform", "rotate(-90deg)");
+		var my_hammer = $(this).parent().next();
+		my_hammer.fadeIn(200).addClass("hammer-smash");
 		
-		image_url = image_url.replace(".png", "-whacked.png");
-		$(this).attr("src",image_url);
-		$("#bonk").get(0).play();
-			
-		table_cell.children(".hammer").delay(250).fadeOut(200, function() {
-			$(this).remove();
+		$(this).delay(150);
+		$(this).queue(function(next){
+			$(this).attr("src",image_url.replace(".png", "-whacked.png"));
+			next(); //keeps queue moving; used instead of dequeue()
+		});
+		var audio = document.createElement("audio");
+		audio.src = "bonk.mp3";
+		// audio.addEventListener("ended", function () {
+            // document.removeChild(this);
+        // }, false);
+        audio.play();   
+		
+		// $("#bonk").get(0).play();
+		
+		my_hammer.delay(250).fadeOut(200, function() {
+			$(this).removeClass("hammer-smash");
 		});
 		
 		$(this).delay(100).animate({bottom: "-165px"}, 2000, function() {
