@@ -1,4 +1,6 @@
 $("#bg-music").prop("volume", 0.1);
+var mole_slots = $(".mole");
+var mole_types = ["student1", "student2", "professor1", "professor2", "dean1", "dean2", "trustee"];
 
 var seconds_left = 60;
 var time_interval = setInterval(function() {
@@ -6,13 +8,13 @@ var time_interval = setInterval(function() {
 	if (seconds_left == 0) {
 		clearInterval(time_interval);
 		clearInterval(mole_interval);
-		
+		$.each(mole_slots, function() {
+			$(this).stop(true).hide();
+		});
 		alert("Game over");
 	}
 }, 1000);
 
-var mole_slots = $(".mole");
-var mole_types = ["student1", "student2", "professor1", "professor2", "dean1", "dean2", "trustee"];
 
 var mole_interval = setInterval(function() {
 	$.each(mole_slots, function(slot_index, value) {
