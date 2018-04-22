@@ -6,6 +6,7 @@ var time_interval = setInterval(function() {
 	if (seconds_left == 0) {
 		clearInterval(time_interval);
 		clearInterval(mole_interval);
+		
 		alert("Game over");
 	}
 }, 1000);
@@ -32,49 +33,38 @@ var mole_interval = setInterval(function() {
 }, 1000);
 
 
-function AnimateRotate(d){
-    var elem = $("#MyDiv2");
-
-    $({deg: 0}).animate({deg: d}, {
-        duration: 2000,
-        step: function(now){
-            elem.css({
-                 transform: "rotate(" + now + "deg)"
-            });
-        }
-    });
-}
-
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
 	if (image_url.search("whacked") == -1) {
-		$(this).stop(true);
+		//mole animation
+		$(this).stop(true)
+			   .delay(150)
+			   .queue(function(next){
+					$(this).attr("src",image_url.replace(".png", "-whacked.png"));
+					next(); //keeps queue moving; used instead of dequeue()
+				})
+			   .delay(100)
+			   .animate({bottom: "-165px"}, 2000, function() {
+					$(this).hide();
+				});
 		
+		//hammer animation
 		var my_hammer = $(this).parent().next();
-		my_hammer.fadeIn(200).addClass("hammer-smash");
-		
-		$(this).delay(150);
-		$(this).queue(function(next){
-			$(this).attr("src",image_url.replace(".png", "-whacked.png"));
-			next(); //keeps queue moving; used instead of dequeue()
+		my_hammer.fadeIn(100).addClass("hammer-smash");
+		my_hammer.delay(200).fadeOut(200, function() {
+			$(this).removeClass("hammer-smash");
 		});
+		
+		//sound effect - might need work
 		var audio = document.createElement("audio");
 		audio.src = "bonk.mp3";
 		// audio.addEventListener("ended", function () {
             // document.removeChild(this);
         // }, false);
-        audio.play();   
-		
+        audio.play();
 		// $("#bonk").get(0).play();
-		
-		my_hammer.delay(250).fadeOut(200, function() {
-			$(this).removeClass("hammer-smash");
-		});
-		
-		$(this).delay(100).animate({bottom: "-165px"}, 2000, function() {
-			$(this).hide();
-		});
-		
+
+		//score increase (might add animation)
 		var score = parseInt($("#score").text());
 		$("#score").text(score+10);
 	}
