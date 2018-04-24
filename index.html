@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="main.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico|Varela+Round" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -91,6 +92,27 @@
 		</tr>
 	</table>
 </div>
+
+<div id="game-end" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+		<div class="modal-content bg-white">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body bg-light">
+				<h1>Your score</h1>
+				<h1 id="end-score"></h1>
+			</div>
+			<div class="modal-footer">
+				<div class="row row-flex">
+					<div class="col-sm-9"></div>
+					<div class="col-sm-3"><button id="play-again" type="button" class="btn" data-dismiss="modal">Play Again</button></div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+
 <!-- <audio id="bg-music" src="spring-in-my-step.mp3" autoplay> -->
 <audio id="bonk" src="bonk.mp3"></audio>
 <script src="main.js"></script>

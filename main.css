@@ -3,13 +3,20 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	font-family: "Varela Round", sans-serif;
+}
+
+body > div {
+	width: 1024px;
+	height: 640px;
+	top: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+	left: auto !important;
 }
 
 
-
 #game-screen {
-	width: 1024px;
-	height: 640px;
 	background-color: #e2e4e4;
 	position: relative;
 	overflow: hidden;
@@ -83,16 +90,16 @@ body {
 
 
 
-table {
+#game-screen table {
 	height: 100%;
 	right: 0px;
 }
 
-th {
+#game-screen th {
 	height: 152px;
 }
 
-th, td {
+#game-screen th, td {
 	width: 238px;
 	position: relative;
 }
@@ -130,4 +137,9 @@ th, td {
 
 .hammer-smash {
 	transform: rotate(-90deg);
+}
+
+
+#game-end {
+	text-align: center
 }

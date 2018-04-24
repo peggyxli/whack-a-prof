@@ -1,40 +1,63 @@
 $("#bg-music").prop("volume", 0.1);
 var mole_slots = $(".mole");
 var mole_types = ["student1", "student2", "professor1", "professor2", "dean1", "dean2", "trustee"];
+playGame();
 
-var seconds_left = 60;
-var time_interval = setInterval(function() {
-	$("#time-left").text(--seconds_left);
-	if (seconds_left == 0) {
-		clearInterval(time_interval);
-		clearInterval(mole_interval);
-		$.each(mole_slots, function() {
-			$(this).stop(true).hide();
-		});
-		alert("Game over");
-	}
-}, 1000);
+var score = 0;
 
-
-var mole_interval = setInterval(function() {
-	$.each(mole_slots, function(slot_index, value) {
-		if (Math.floor(Math.random() * 2) == 1 && $(this).not(":animated")) {
-			if ($(this).is(":hidden") && $(this).not(":animated")) {
-				var random_index = Math.floor(Math.random() * mole_types.length);
-				$(this).attr("src","moles/" + mole_types[random_index] + ".png");
-				$(this).show(0);
-				$(this).animate({bottom: "-15px"}, 2000);
-			}
-			else {
-				$(this).animate({bottom: "-165px"}, 2000, function() {
-					$(this).hide();
-				});
-			}
+/*	Main gameplay function
+	Resets game
+	Starts timer countdown
+	Starts mole popups
+*/
+function playGame() {
+	$("#score").text(score=0);
+	var seconds_left = 10;
+	
+	//Timer function/interval
+	var time_interval = setInterval(function() {
+		$("#time-left").text(--seconds_left);
+		if (seconds_left == 0) { //Ending game stuff
+			clearInterval(time_interval);
+			clearInterval(mole_interval);
+			$.each(mole_slots, function() {
+				$(this).stop(true).hide();
+				$(this).css("bottom", "-165px");
+			});
+			$("#end-score").text(score);
+			$("#game-end").modal();
 		}
-	});
-}, 1000);
+	}, 1000);
+
+	//Mole popup function/interval
+	//50% chance of pop up if hidden or hide if already up
+	var mole_interval = setInterval(function() {
+		$.each(mole_slots, function(slot_index, value) {
+			if (Math.floor(Math.random() * 2) == 1 && $(this).not(":animated")) {
+				if ($(this).is(":hidden") && $(this).not(":animated")) {
+					var random_index = Math.floor(Math.random() * mole_types.length);
+					$(this).attr("src","moles/" + mole_types[random_index] + ".png");
+					$(this).show(0);
+					$(this).animate({bottom: "-15px"}, 2000);
+				}
+				else {
+					$(this).animate({bottom: "-165px"}, 2000, function() {
+						$(this).hide();
+					});
+				}
+			}
+		});
+	}, 1000);
+}
 
 
+/*  Event listener: acts on mole click 
+	(Pulled outside of playGame because the animations act weird inside playGame; probably has something to do with jQuery queues)
+	Makes the mole disappear
+	Displays an animated hammer
+	Plays sound effect(s)
+	Increases score
+*/
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
 	if (image_url.search("whacked") == -1) {
@@ -61,13 +84,21 @@ $(".mole").click(function() {
 		var audio = document.createElement("audio");
 		audio.src = "bonk.mp3";
 		// audio.addEventListener("ended", function () {
-            // document.removeChild(this);
-        // }, false);
-        audio.play();
+			// document.removeChild(this);
+		// }, false);
+		audio.play();
 		// $("#bonk").get(0).play();
 
 		//score increase (might add animation)
-		var score = parseInt($("#score").text());
-		$("#score").text(score+10);
+		$("#score").text(score+=10);
 	}
+});
+
+
+/*	Acts on game ending modal button
+	Resets game and resumes gameplay
+	Can be replaced by "onclick = playGame()" in HTML (but I prefer to keep all functions in JS file)
+*/
+$("#play-again").click(function(){
+	playGame();
 });
