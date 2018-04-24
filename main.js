@@ -8,10 +8,7 @@ $("#scream").prop("volume", 0.2);
 */
 $("#splash-screen").click(function(){
 	$("#bg-music").get(0).play();
-	$(this).fadeOut("slow", function(){
-		
-		playGame();
-	});
+	$(this).fadeOut("slow", playGame);
 });
 
 
