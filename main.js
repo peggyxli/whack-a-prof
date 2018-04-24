@@ -1,8 +1,19 @@
 $("#bg-music").prop("volume", 0.1);
+
+/*	Event listener: acts on splash screen click
+	Fades splash screen out and begins game
+*/
+$("#splash-screen").click(function(){
+	$("#bg-music").get(0).play();
+	$(this).fadeOut("slow", function(){
+		
+		playGame();
+	});
+});
+
+
 var mole_slots = $(".mole");
 var mole_types = ["student1", "student2", "professor1", "professor2", "dean1", "dean2", "trustee"];
-playGame();
-
 var score = 0;
 
 /*	Main gameplay function
@@ -12,7 +23,7 @@ var score = 0;
 */
 function playGame() {
 	$("#score").text(score=0);
-	var seconds_left = 10;
+	var seconds_left = 60;
 	
 	//Timer function/interval
 	var time_interval = setInterval(function() {
@@ -25,7 +36,7 @@ function playGame() {
 				$(this).css("bottom", "-165px");
 			});
 			$("#end-score").text(score);
-			$("#game-end").modal();
+			$("#ending-screen").modal();
 		}
 	}, 1000);
 
