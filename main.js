@@ -1,4 +1,7 @@
+//Music/sound volume adjustments
 $("#bg-music").prop("volume", 0.1);
+$("#scream").prop("volume", 0.2);
+
 
 /*	Event listener: acts on splash screen click
 	Fades splash screen out and begins game
@@ -71,7 +74,7 @@ function playGame() {
 */
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
-	if (image_url.search("whacked") == -1) {
+	if (!image_url.includes("whacked")) {
 		//mole animation
 		$(this).stop(true)
 			   .delay(150)
@@ -99,7 +102,10 @@ $(".mole").click(function() {
 		// }, false);
 		audio.play();
 		// $("#bonk").get(0).play();
-
+		
+		if(image_url.includes("trustee"))
+			 $("#scream").get(0).play();
+		 
 		//score increase (might add animation)
 		$("#score").text(score+=10);
 	}
@@ -110,6 +116,4 @@ $(".mole").click(function() {
 	Resets game and resumes gameplay
 	Can be replaced by "onclick = playGame()" in HTML (but I prefer to keep all functions in JS file)
 */
-$("#play-again").click(function(){
-	playGame();
-});
+$("#play-again").click(playGame);
