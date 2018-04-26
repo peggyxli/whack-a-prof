@@ -1,5 +1,5 @@
 //Music/sound volume adjustments
-$("#bg-music").prop("volume", 0.1);
+$("#bg-music").prop("volume", 0.0);
 $("#scream").prop("volume", 0.2);
 
 
@@ -23,7 +23,7 @@ var score = 0;
 */
 function playGame() {
 	$("#score").text(score=0);
-	var seconds_left = 60;
+	var seconds_left = 2;
 	
 	//Timer function/interval
 	var time_interval = setInterval(function() {
@@ -35,8 +35,12 @@ function playGame() {
 				$(this).stop(true).hide();
 				$(this).css("bottom", "-165px");
 			});
-			$("#end-score").text(score);
-			$("#ending-screen").modal();
+			
+			//Show ending screen stuff
+			$("#ending-score").text(score);
+			$("#ending-screen-bg").fadeIn();
+			$("#diploma-wrapper").fadeIn(200);
+			$("#diploma-frame").animate({top: "25px"})
 		}
 	}, 1000);
 
@@ -80,7 +84,7 @@ $(".mole").click(function() {
 					next(); //keeps queue moving; used instead of dequeue()
 				})
 			   .delay(100)
-			   .animate({bottom: "-165px"}, 2000, function() {
+			   .animate({bottom: "-165px"}, 500, function() {
 					$(this).hide();
 				});
 		
@@ -100,11 +104,18 @@ $(".mole").click(function() {
 		audio.play();
 		// $("#bonk").get(0).play();
 		
-		if(image_url.includes("trustee"))
-			 $("#scream").get(0).play();
-		 
 		//score increase (might add animation)
-		$("#score").text(score+=10);
+		if(image_url.includes("trustee")) {
+			$("#scream").get(0).play();
+			score+=100;
+		} else if (image_url.includes("dean")) {
+			score+=60;
+		} else if (image_url.includes("professor")) {
+			score+=30;
+		} else {
+			score+=10;
+		}
+		$("#score").text(score);
 	}
 });
 
@@ -113,4 +124,8 @@ $(".mole").click(function() {
 	Resets game and resumes gameplay
 	Can be replaced by "onclick = playGame()" in HTML (but I prefer to keep all functions in JS file)
 */
-$("#play-again").click(playGame);
+$("#play-again-wrapper").click(function() {
+	$("#diploma-wrapper").fadeOut();
+	$("#ending-screen-bg").fadeOut();
+	playGame();
+});

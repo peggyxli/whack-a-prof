@@ -4,18 +4,18 @@
 	<title>Whack-a-Prof</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="main.css">
 	<link href="https://fonts.googleapis.com/css?family=Pacifico|Varela+Round" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+
 <div id="splash-screen">
 	<img src="splash-screen-chalkboard.png">
-	<h1>Click anywhere to begin</h1>
+	<h2>Click anywhere to begin</h2>
 </div>
+
 
 <div id="game-screen">
 	<div id="wall">
@@ -31,8 +31,10 @@
 		<div class="game-stat-bg"><h2>Time left: <span id="time-left">60</span> sec</h2></div>
 	</div>
 	<div id="game-menu-buttons">
-		<span style="margin-right:8px">Settings</span>
-		<span>Credits</span>
+		<h2>
+			<span style="margin-right:8px">Settings</span>
+			<span>Credits</span>
+		</h2>
 	</div>
 	
 	<table>
@@ -98,25 +100,30 @@
 	</table>
 </div>
 
-<div id="ending-screen" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-		<div class="modal-content bg-white">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body bg-light">
-				<h1>Your score</h1>
-				<h1 id="end-score"></h1>
-			</div>
-			<div class="modal-footer">
-				<div class="row row-flex">
-					<div class="col-sm-9"></div>
-					<div class="col-sm-3"><button id="play-again" type="button" class="btn" data-dismiss="modal">Play Again</button></div>
+
+<div id="ending-screen-bg"></div>
+<div id="diploma-wrapper">
+	<div id="diploma-frame">
+		<img src="diploma-accent.png">
+		<div id="diploma-matting">
+			<div id="diploma-paper">
+				<img id="diploma-banner" src="diploma-banner.png">
+				<h1>Whack-a-Prof</h1>
+				<div id="diploma-score-bar-top">Your score</div>
+				<span id="ending-score"></span>
+				<div id="diploma-score-bar-bottom"></div>
+				<div id="diploma-credits-wrapper">
+					<h2>Credits</h2>
+					<img src="diploma-stars.png">
+				</div>
+				<div id="play-again-wrapper">
+					<h2>Play<br>Again</h2>
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>
+
 
 <audio id="bg-music" src="spring-in-my-step.mp3" loop></audio>
 <audio id="bonk" src="bonk.mp3"></audio>

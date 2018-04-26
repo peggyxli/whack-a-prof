@@ -3,7 +3,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	margin: 0;
 	font-family: "Varela Round", sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
 }
 
 body > div {
@@ -15,6 +18,19 @@ body > div {
 	left: auto !important;
 }
 
+h1, h2, h3 {
+	font-family: "Pacifico", cursive;
+	font-weight: 500;
+    line-height: 1.1;
+}
+
+img {
+	vertical-align: middle;
+}
+
+* {
+	box-sizing: border-box;
+}
 
 
 /*********************************
@@ -32,10 +48,10 @@ body > div {
 	margin-top: 50px;
 }
 
-#splash-screen h1{
-	font-family: 'Pacifico', cursive;
+#splash-screen h2 {
 	color: #eeeeee;
 	margin-top: 35px;
+	font-size: 36px;
 }
 
 
@@ -54,9 +70,13 @@ body > div {
 	position: absolute;
 }
 
-#game-screen h2, #game-menu-buttons {
-	font-family: 'Pacifico', cursive;
+#game-screen h2 {
 	font-size: 23px;
+}
+
+#game-menu-buttons h2 {
+	margin: 0;
+	line-height: 1.42857143;
 }
 
 
@@ -121,6 +141,7 @@ body > div {
 #game-screen table {
 	height: 100%;
 	right: 0px;
+	border-collapse: collapse;
 }
 
 #game-screen th {
@@ -130,6 +151,7 @@ body > div {
 #game-screen th, td {
 	width: 238px;
 	position: relative;
+	padding: 0;
 }
 
 .desk {
@@ -172,7 +194,130 @@ body > div {
 /*********************************
 		Ending screen stuff
  *********************************/
+
+#ending-screen-bg, #diploma-wrapper {
+	position: absolute;
+	display: none;
+}
  
-#ending-screen {
-	text-align: center
+#ending-screen-bg {
+	background-image: url("ending-screen-background.png");
+}
+
+#diploma-wrapper {
+	text-align: center;
+	color: #352353;
+	overflow: hidden;
+}
+
+#diploma-frame, #diploma-paper {
+	position: relative;
+	margin: auto;
+}
+
+#diploma-frame {
+	width: 490px;
+	height: 590px;
+	background-color: #77392a;
+	top: -50px;
+	box-shadow: 5px 5px 10px #00000066;
+}
+
+#diploma-matting {
+	width: 410px;
+	height: 510px;
+	background-color: #fdf4eb;
+	margin-top: 8px;
+	margin-left: 38px;
+}
+
+#diploma-paper {
+	width: 376px;
+	height: 468px;
+	background-color: #f4e5d0;
+	top: 21px;
+}
+
+/* Diploma content */
+#diploma-banner {
+	margin-top: 11px;
+}
+
+#diploma-paper h1 {
+    font-size: 32px;
+    margin-top: 49px;
+	margin-bottom: 16px;
+}
+
+#diploma-score-bar-top, #diploma-score-bar-bottom {
+	background-color: #a39b90;
+	width: 272px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#diploma-score-bar-top {
+	height: 20px;
+	top: 21px;
+}
+
+#ending-score {
+	font-size: 85px;
+    font-weight: 500;
+    line-height: 1.18;
+}
+
+#diploma-score-bar-bottom {
+	height: 7px;
+	top: 21px;
+}
+
+
+/* Ending screen buttons */
+#diploma-paper h2 {
+	font-size: 24px;
+}
+
+#diploma-credits-wrapper {
+	position: absolute;
+	left: 9px;
+	bottom: 12px;
+}
+
+#diploma-credits-wrapper h2 {
+	margin-bottom: 3px;
+	cursor: pointer;
+	position: relative;
+}
+
+#diploma-credits-wrapper h2:hover {
+	color: #bf3544;
+    text-shadow: 2px 2px 3px #0000003b;
+    bottom: 2px;
+    right: 2px;
+}
+
+#play-again-wrapper {
+	position: absolute;
+	right: 25px;
+	bottom: 20px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	cursor: pointer;
+	width: 116px;
+	height: 104px;
+	background-image: url("diploma-sticker.png");
+}
+
+#play-again-wrapper:hover {
+	width: 120px;
+	height: 108px;
+	background-image: url("diploma-sticker-shadow.png");
+	color: #bf3544;
+}
+
+#play-again-wrapper h2 {
+	position: relative;
+    margin: auto;
 }
