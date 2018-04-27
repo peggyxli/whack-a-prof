@@ -32,6 +32,11 @@ img {
 	box-sizing: border-box;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
+
 
 /*********************************
 		Splash screen stuff
@@ -53,6 +58,7 @@ img {
 	margin-top: 35px;
 	font-size: 36px;
 }
+
 
 
 
@@ -191,11 +197,12 @@ img {
 
 
 
+
 /*********************************
 		Ending screen stuff
  *********************************/
 
-#ending-screen-bg, #diploma-wrapper {
+#ending-screen-bg, #ending-screen {
 	position: absolute;
 	display: none;
 }
@@ -204,12 +211,13 @@ img {
 	background-image: url("ending-screen-background.png");
 }
 
-#diploma-wrapper {
+#ending-screen {
 	text-align: center;
 	color: #352353;
 	overflow: hidden;
 }
 
+/* Ending screen diploma */
 #diploma-frame, #diploma-paper {
 	position: relative;
 	margin: auto;
@@ -238,11 +246,11 @@ img {
 	top: 21px;
 }
 
-/* Diploma content */
 #diploma-banner {
 	margin-top: 11px;
 }
 
+/* Ending screen title & score */
 #diploma-paper h1 {
     font-size: 32px;
     margin-top: 49px;
@@ -273,7 +281,7 @@ img {
 }
 
 
-/* Ending screen buttons */
+/* Ending screen Credits button */
 #diploma-paper h2 {
 	font-size: 24px;
 }
@@ -297,6 +305,7 @@ img {
     right: 2px;
 }
 
+/* Ending screen Play Again button */
 #play-again-wrapper {
 	position: absolute;
 	right: 25px;
@@ -320,4 +329,83 @@ img {
 #play-again-wrapper h2 {
 	position: relative;
     margin: auto;
+}
+
+
+
+
+/*********************************
+		Credits screen stuff
+ *********************************/
+#credits-screen {
+	position: absolute;
+	background-color: #92ae86;
+	display: none;
+	color: #e0e0e0;
+}
+
+#credits-screen img {
+	position: absolute;
+	top: 45px;
+	left: 100px;
+}
+
+#credits-screen h2 {
+	color: #e2e4e4;
+	margin: 15px 0;
+	font-size: 2.25rem;
+}
+
+#credits-screen h3 {
+	margin: 0;
+}
+
+#credits-screen .clickable:hover {
+	color: white;
+}
+
+#credits-text-wrapper {
+	position: relative;
+    top: 109px;
+    left: 146px;
+    height: 402px;
+    width: 733px;
+}
+
+#credits-title {
+	text-decoration: underline;
+}
+
+#credits-close {
+	font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#credits-developers, #credits-sources {
+	display:none;
+}
+
+#credits-text-wrapper td {
+	vertical-align: top;
+}
+
+#credits-text-wrapper ul {
+	margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#credits-back {
+	position: absolute;
+    bottom: 0;
+	left: 0;
+	display: none;
+}
+	
+#credits-next {
+	position: absolute;
+    bottom: 0;
+    right: 37px;
 }

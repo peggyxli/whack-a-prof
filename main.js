@@ -1,5 +1,5 @@
 //Music/sound volume adjustments
-$("#bg-music").prop("volume", 0.0);
+$("#bg-music").prop("volume", 0.1);
 $("#scream").prop("volume", 0.2);
 
 
@@ -23,7 +23,7 @@ var score = 0;
 */
 function playGame() {
 	$("#score").text(score=0);
-	var seconds_left = 2;
+	var seconds_left = 60;
 	
 	//Timer function/interval
 	var time_interval = setInterval(function() {
@@ -39,7 +39,7 @@ function playGame() {
 			//Show ending screen stuff
 			$("#ending-score").text(score);
 			$("#ending-screen-bg").fadeIn();
-			$("#diploma-wrapper").fadeIn(200);
+			$("#ending-screen").fadeIn(200);
 			$("#diploma-frame").animate({top: "25px"})
 		}
 	}, 1000);
@@ -120,12 +120,43 @@ $(".mole").click(function() {
 });
 
 
-/*	Acts on game ending modal button
+/*	Acts on game ending screen button
 	Resets game and resumes gameplay
-	Can be replaced by "onclick = playGame()" in HTML (but I prefer to keep all functions in JS file)
 */
 $("#play-again-wrapper").click(function() {
-	$("#diploma-wrapper").fadeOut();
+	$("#ending-screen").fadeOut();
 	$("#ending-screen-bg").fadeOut();
 	playGame();
+});
+
+
+$("#diploma-credits").click(function() {
+	$("#credits-screen").fadeIn(function(){
+		$("#credits-developers").slideDown(2000);
+	});
+});
+
+$("#credits-close").click(function() {
+	$("#credits-screen").fadeOut(function() {
+		$("#credits-developers").hide();
+		$("#credits-sources").hide();
+		$("#credits-next").show();
+		$("#credits-back").hide();
+	});
+});
+
+$("#credits-next").click(function() {
+	$(this).fadeOut();
+	$("#credits-developers").slideUp(750, function() {
+		$("#credits-sources").slideDown(2000);
+		$("#credits-back").fadeIn();
+	});
+});
+
+$("#credits-back").click(function() {
+	$(this).fadeOut();
+	$("#credits-sources").slideUp(750, function() {
+		$("#credits-developers").slideDown(2000);
+		$("#credits-next").fadeIn();
+	});
 });
