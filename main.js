@@ -1,5 +1,5 @@
 //Music/sound volume adjustments
-$("#bg-music").prop("volume", 0.1);
+$("#bg-music").prop("volume", 0.0);
 $("#scream").prop("volume", 0.2);
 
 
@@ -45,24 +45,35 @@ function playGame() {
 	}, 1000);
 
 	//Mole popup function/interval
-	//50% chance of pop up if hidden or hide if already up
 	var mole_interval = setInterval(function() {
-		$.each(mole_slots, function(slot_index, value) {
-			if (Math.floor(Math.random() * 2) == 1 && $(this).not(":animated")) {
-				if ($(this).is(":hidden") && $(this).not(":animated")) {
-					var random_index = Math.floor(Math.random() * mole_types.length);
-					$(this).attr("src","moles/" + mole_types[random_index] + ".png");
-					$(this).show(0);
-					$(this).animate({bottom: "-15px"}, 2000);
-				}
-				else {
-					$(this).animate({bottom: "-165px"}, 2000, function() {
+		var open_mole_slots = $(".mole").filter(':hidden');
+		var random_slot = open_mole_slots[Math.floor(Math.random() * open_mole_slots.length)];
+		
+		var random_index = Math.floor(Math.random() * mole_types.length);
+		$(random_slot).attr("src","moles/" + mole_types[random_index] + ".png");
+		$(random_slot).show(0)
+					  .animate({bottom: "-15px"}, 2000)
+					  .delay(1000)
+					  .animate({bottom: "-165px"}, 2000, function() {
 						$(this).hide();
-					});
-				}
-			}
+					  });
+	}, 750);
+	
+	//Event listener: acts on "end game" link click
+	$("#end-game").click(function() {
+		clearInterval(time_interval);
+		clearInterval(mole_interval);
+		$.each(mole_slots, function() {
+			$(this).stop(true).hide();
+			$(this).css("bottom", "-165px");
 		});
-	}, 1000);
+		
+		//Show ending screen stuff
+		$("#ending-score").text(score);
+		$("#ending-screen-bg").fadeIn();
+		$("#ending-screen").fadeIn(200);
+		$("#diploma-frame").animate({top: "25px"})
+	});
 }
 
 
