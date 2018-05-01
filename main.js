@@ -86,7 +86,7 @@ function playGame() {
 */
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
-	if (!image_url.includes("whacked")) {
+	if (!image_url.includes("whacked") && parseInt($(this).css("bottom"), 10) < -120) {
 		//mole animation
 		$(this).stop(true)
 			   .delay(150)
