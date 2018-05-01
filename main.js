@@ -1,6 +1,7 @@
 //Music/sound volume adjustments
 $("#bg-music").prop("volume", 0.0);
 $("#scream").prop("volume", 0.2);
+$("#bell").prop("volume", 0.5);
 
 
 /*	Event listener: acts on splash screen click
@@ -23,12 +24,13 @@ var score = 0;
 */
 function playGame() {
 	$("#score").text(score=0);
-	var seconds_left = 60;
+	var seconds_left = 30;
 	
 	//Timer function/interval
 	var time_interval = setInterval(function() {
 		$("#time-left").text(--seconds_left);
 		if (seconds_left == 0) { //Ending game stuff
+			$("#bell").get(0).play();
 			clearInterval(time_interval);
 			clearInterval(mole_interval);
 			$.each(mole_slots, function() {
@@ -39,8 +41,8 @@ function playGame() {
 			//Show ending screen stuff
 			$("#ending-score").text(score);
 			$("#ending-screen-bg").fadeIn();
-			$("#ending-screen").fadeIn(200);
-			$("#diploma-frame").animate({top: "25px"})
+			$("#ending-screen").delay(150).fadeIn(400);
+			$("#diploma-frame").delay(150).animate({top: "25px"},600)
 		}
 	}, 1000);
 
@@ -61,6 +63,7 @@ function playGame() {
 	
 	//Event listener: acts on "end game" link click
 	$("#end-game").click(function() {
+		$("#bell").get(0).play();
 		clearInterval(time_interval);
 		clearInterval(mole_interval);
 		$.each(mole_slots, function() {
@@ -140,7 +143,9 @@ $(".mole").click(function() {
 	Resets game and resumes gameplay
 */
 $("#play-again-wrapper").click(function() {
-	$("#ending-screen").fadeOut();
+	$("#ending-screen").fadeOut(function() {
+		$("#diploma-frame").css("top","-50px");
+	});
 	$("#ending-screen-bg").fadeOut();
 	playGame();
 });
