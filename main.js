@@ -1,7 +1,7 @@
 //Music/sound volume adjustments
-$("#bg-music").prop("volume", 0.0);
+$("#bg-music").prop("volume", 0.1);
 $("#scream").prop("volume", 0.2);
-$("#bell").prop("volume", 0.5);
+$("#bell").prop("volume", 0.4);
 
 
 /*	Event listener: acts on splash screen click
