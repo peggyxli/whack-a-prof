@@ -86,7 +86,7 @@ function playGame() {
 */
 $(".mole").click(function() {
 	var image_url = $(this).attr("src");
-	if (!image_url.includes("whacked") && parseInt($(this).css("bottom"), 10) < -120) {
+	if (!image_url.includes("whacked") && parseInt($(this).css("bottom"), 10) > -120) {
 		//mole animation
 		$(this).stop(true)
 			   .delay(150)
@@ -94,10 +94,15 @@ $(".mole").click(function() {
 					$(this).attr("src",image_url.replace(".png", "-whacked.png"));
 					next(); //keeps queue moving; used instead of dequeue()
 				})
-			   .delay(100)
-			   .animate({bottom: "-165px"}, 500, function() {
-					$(this).hide();
-				});
+			   .delay(150)
+			   .animate({
+				   bottom: "-165px",
+				   opacity: 0
+			   }, 500, function() {
+				   $(this).css("opacity", "1");
+				   $(this).hide(0);
+			   });
+		// $(this).delay(100).fadeOut(600);
 		
 		//hammer animation
 		var my_hammer = $(this).parent().next();
