@@ -32,10 +32,13 @@ img {
 	box-sizing: border-box;
 }
 
-.clickable {
+.clickable-text {
 	cursor: pointer;
 }
 
+.clickable-text:hover {
+    text-shadow: 2px 2px 3px #0000003b;
+}
 
 
 /*********************************
@@ -294,14 +297,12 @@ img {
 
 #diploma-credits-wrapper h2 {
 	margin-bottom: 3px;
-	cursor: pointer;
 	position: relative;
 }
 
 #diploma-credits-wrapper h2:hover {
 	color: #bf3544;
-    text-shadow: 2px 2px 3px #0000003b;
-    bottom: 2px;
+	bottom: 2px;
     right: 2px;
 }
 
@@ -350,20 +351,6 @@ img {
 	left: 100px;
 }
 
-#credits-screen h2 {
-	color: #e2e4e4;
-	margin: 15px 0;
-	font-size: 2.25rem;
-}
-
-#credits-screen h3 {
-	margin: 0;
-}
-
-#credits-screen .clickable:hover {
-	color: white;
-}
-
 #credits-text-wrapper {
 	position: relative;
     top: 109px;
@@ -372,8 +359,19 @@ img {
     width: 733px;
 }
 
+#credits-screen h2 {
+	color: #e2e4e4;
+	margin: 15px 0;
+	font-size: 2.25rem;
+}
+
 #credits-title {
 	text-decoration: underline;
+}
+
+/* Credits screen navigation */
+#credits-screen .clickable-text:hover {
+	color: #dfb166;
 }
 
 #credits-close {
@@ -382,6 +380,24 @@ img {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+#credits-back {
+	position: absolute;
+    bottom: 0;
+	left: 0;
+	display: none;
+}
+	
+#credits-next {
+	position: absolute;
+    bottom: 0;
+    right: 37px;
+}
+
+/* Credits screen main content */
+#credits-screen h3 {
+	margin: 0;
 }
 
 #credits-developers, #credits-sources {
@@ -397,15 +413,10 @@ img {
     margin-bottom: 20px;
 }
 
-#credits-back {
-	position: absolute;
-    bottom: 0;
-	left: 0;
-	display: none;
+#credits-screen a {
+	color: #80D8FF;
 }
-	
-#credits-next {
-	position: absolute;
-    bottom: 0;
-    right: 37px;
+
+#credits-screen a:visited {
+	color: #b388ff;
 }

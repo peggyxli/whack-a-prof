@@ -163,7 +163,7 @@ $("#credits-close").click(function() {
 
 $("#credits-next").click(function() {
 	$(this).fadeOut();
-	$("#credits-developers").slideUp(750, function() {
+	$("#credits-developers").stop(true).slideUp(750, function() {
 		$("#credits-sources").slideDown(2000);
 		$("#credits-back").fadeIn();
 	});
@@ -171,7 +171,7 @@ $("#credits-next").click(function() {
 
 $("#credits-back").click(function() {
 	$(this).fadeOut();
-	$("#credits-sources").slideUp(750, function() {
+	$("#credits-sources").stop(true).slideUp(750, function() {
 		$("#credits-developers").slideDown(2000);
 		$("#credits-next").fadeIn();
 	});
