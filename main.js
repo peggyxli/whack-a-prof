@@ -95,6 +95,10 @@ $(".mole").click(function() {
 			   .delay(150)
 			   .queue(function(next){
 					$(this).attr("src",image_url.replace(".png", "-whacked.png"));
+					if(image_url.includes("trustee")) {
+						$("#blood-screen").show();
+						$("#blood-screen").fadeOut();
+					}
 					next(); //keeps queue moving; used instead of dequeue()
 				})
 			   .delay(150)
@@ -105,7 +109,6 @@ $(".mole").click(function() {
 				   $(this).css("opacity", "1");
 				   $(this).hide(0);
 			   });
-		// $(this).delay(100).fadeOut(600);
 		
 		//hammer animation
 		var my_hammer = $(this).parent().next();
