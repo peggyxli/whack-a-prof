@@ -48,20 +48,20 @@ img {
 
 
 
-/*********************************
-		Error screen stuff
- *********************************/
+/*******************************************
+		Error & warning screens stuff
+ *******************************************/
 
 #error-screen {
 	display: initial;
-	z-index: 2;
+	z-index: 3;
 	background-color: white;
 	height: 95vh;
 	width: 95vw;
     padding: 15px;
 }
 
-#error-screen h1 {
+#error-screen h1, #warning-screen h1 {
 	font: bold 2rem "Varela Round", sans-serif;
 	color: red;
 }
@@ -76,13 +76,26 @@ img {
 #error-screen {
 	display: none;
 }
-
 body > div {
 	display: initial;
 }
 }
  
 
+#warning-screen {
+	z-index: 2;
+	background-color: white;
+	padding: 15px;
+	border: 5px solid red;
+	display: none;
+}
+
+#warning-screen span {
+	text-decoration: underline;
+	color: blue;
+	cursor: pointer;
+}
+ 
 
 /*********************************
 		Splash screen stuff

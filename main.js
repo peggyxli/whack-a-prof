@@ -1,3 +1,12 @@
+
+//Browser warning stuff
+if (navigator.userAgent.indexOf("Chrome") == -1)
+	$("#warning-screen").css("display","block");
+
+$("#warning-screen").children("span").click(function() {
+	$("#warning-screen").fadeOut();
+});
+
 //Music/sound volume adjustments
 $("#bg-music").prop("volume", 0.2);
 $("#scream").prop("volume", 0.4);
@@ -54,7 +63,7 @@ function playGame() {
 		var random_index = Math.floor(Math.random() * mole_types.length);
 		$(random_slot).attr("src","moles/" + mole_types[random_index] + ".png");
 		$(random_slot).show(0)
-					  .animate({bottom: "-15px"}, 2000)
+					  .animate({bottom: "-15px"}, 1500)
 					  .delay(1000)
 					  .animate({bottom: "-165px"}, 2000, function() {
 						$(this).hide();
@@ -105,7 +114,7 @@ $(".mole").click(function() {
 			   .animate({
 				   bottom: "-165px",
 				   opacity: 0
-			   }, 500, function() {
+			   }, 400, function() {
 				   $(this).css("opacity", "1");
 				   $(this).hide(0);
 			   });
