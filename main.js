@@ -1,7 +1,7 @@
 //Music/sound volume adjustments
-$("#bg-music").prop("volume", 0.1);
-$("#scream").prop("volume", 0.2);
-$("#bell").prop("volume", 0.4);
+$("#bg-music").prop("volume", 0.2);
+$("#scream").prop("volume", 0.4);
+$("#bell").prop("volume", 0.8);
 
 
 /*	Event listener: acts on splash screen click
@@ -118,13 +118,12 @@ $(".mole").click(function() {
 		});
 		
 		//sound effect - might need work
-		var audio = document.createElement("audio");
-		audio.src = "bonk.mp3";
+		var bonk_sound = document.createElement("audio");
+		bonk_sound.src = "bonk.mp3";
 		// audio.addEventListener("ended", function () {
 			// document.removeChild(this);
 		// }, false);
-		audio.play();
-		// $("#bonk").get(0).play();
+		bonk.play();
 		
 		//score increase (might add animation)
 		if(image_url.includes("trustee")) {
