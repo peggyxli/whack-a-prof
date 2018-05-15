@@ -88,6 +88,8 @@ body > div {
 	padding: 15px;
 	border: 5px solid red;
 	display: none;
+	max-height: 95vh;
+	max-width: 95vw;
 }
 
 #warning-screen span {
