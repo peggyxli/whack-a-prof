@@ -104,10 +104,6 @@ $(".mole").click(function() {
 			   .delay(150)
 			   .queue(function(next){
 					$(this).attr("src",image_url.replace(".png", "-whacked.png"));
-					if(image_url.includes("trustee")) {
-						$("#blood-screen").show();
-						$("#blood-screen").fadeOut();
-					}
 					next(); //keeps queue moving; used instead of dequeue()
 				})
 			   .delay(150)
@@ -136,7 +132,6 @@ $(".mole").click(function() {
 		
 		//score increase (might add animation)
 		if(image_url.includes("trustee")) {
-			$("#scream").get(0).play();
 			score+=100;
 		} else if (image_url.includes("dean")) {
 			score+=60;
